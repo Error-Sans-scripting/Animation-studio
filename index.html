@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09060f"><meta name="description" content="Animation Studio — мобильный редактор анимации">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Animation Studio</title>
+<style>
+:root{--bg:#09060f;--panel:#120d1b;--panel2:#1a1125;--line:#352044;--purple:#bd59ff;--purple2:#8f32e8;--text:#f6efff;--muted:#a998b8;--danger:#ff6b9d;--green:#8fffd1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select{font:inherit}button{border:1px solid var(--line);background:#21142e;color:var(--text);border-radius:10px;padding:9px 11px;cursor:pointer}button:hover{border-color:var(--purple)}button:disabled{opacity:.4;cursor:not-allowed}.primary{background:linear-gradient(135deg,#9c35e8,#6423a5);border-color:#c47aff}.iconbtn{padding:8px;min-width:36px}.app{max-width:1500px;margin:auto;min-height:100dvh;display:flex;flex-direction:column}.top{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:#0d0814;position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;min-width:0}.brand strong{display:block;color:var(--purple);font-size:17px;letter-spacing:.3px}.brand small{color:var(--muted)}.topactions{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}.workspace{display:grid;grid-template-columns:58px minmax(0,1fr) 240px;gap:10px;padding:10px;flex:1;min-height:420px}.tools,.side,.timeline{background:var(--panel);border:1px solid var(--line);border-radius:14px}.tools{display:flex;flex-direction:column;align-items:center;gap:7px;padding:8px 5px}.tool{width:43px;height:42px;font-size:18px;padding:0;display:grid;place-items:center}.tool svg{width:21px;height:21px;fill:none;stroke:var(--purple);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.tool[data-tool="select"] svg{fill:var(--purple);stroke:var(--purple)}.tool.active{background:#4b1d68;border-color:var(--purple);box-shadow:0 0 14px #a742ff38}.stagewrap{min-width:0;display:flex;flex-direction:column;gap:8px}.stagebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--muted)}.stagebar strong{color:var(--text)}.stage{position:relative;flex:1;min-height:300px;background:radial-gradient(ellipse at center,#1a1023,#09060f 70%);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;place-items:center;touch-action:none}.stage canvas{max-width:100%;max-height:100%;width:min(100%,850px);aspect-ratio:16/9;background:#fff;object-fit:contain;touch-action:none;box-shadow:0 8px 40px #0008}.side{padding:12px;display:flex;flex-direction:column;gap:12px;overflow:auto}.sectionhead{display:flex;align-items:center;justify-content:space-between;font-weight:700}.layerlist{display:flex;flex-direction:column;gap:5px}.layer{display:flex;align-items:center;gap:7px;padding:8px;border:1px solid transparent;background:#1a1124;border-radius:9px;cursor:pointer}.layer.selected{border-color:var(--purple);background:#2a1639}.layer span:nth-child(2){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}.muted{color:var(--muted)}.small{font-size:12px}.props{display:grid;grid-template-columns:1fr 1fr;gap:8px}.props label{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:12px}.props input,.props select{min-width:0;width:100%;background:#0b0710;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:7px}.props input[type=color]{height:34px;padding:3px}.timeline{margin:0 10px 10px;padding:10px;overflow:hidden}.timelinehead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px}.timelinehead strong{margin-right:auto}.frames{display:flex;gap:6px;overflow-x:auto;padding:4px 1px 8px}.frame{flex:0 0 68px;height:56px;background:#1a1124;border:1px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}.frame.active{border-color:var(--purple);background:#321648;box-shadow:0 0 10px #a742ff26}.frame small{color:var(--muted);font-size:10px}.status{padding:0 14px 12px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:8px}.mobilehint{display:none}
+@media(max-width:850px){.workspace{grid-template-columns:48px minmax(0,1fr);}.side{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;align-items:start}.tools{grid-row:1}.stagewrap{min-height:340px}.topactions button{padding:7px 8px}.brand small{display:none}.timeline{margin-top:0}.mobilehint{display:block}}
+@media(max-width:520px){.top{padding:8px}.brand strong{font-size:15px}.topactions{gap:4px}.topactions button{font-size:12px;padding:7px}.workspace{gap:6px;padding:6px;grid-template-columns:43px minmax(0,1fr)}.tools{padding:5px 3px}.tool{width:35px;height:37px}.stage{min-height:245px}.side{padding:9px;gap:10px;grid-template-columns:1fr}.timeline{margin:0 6px 8px}.status{padding:0 8px 10px}.stagebar .wide{display:none}}
+</style>
+</head>
+<body><div class="app">
+<header class="top">
+ <div class="brand"><div><strong>Название приложения</strong><small>Animation Studio · Beta</small></div></div>
+ <div class="topactions"><button id="newBtn">Новый</button><button id="openBtn">Открыть</button><button id="saveBtn" class="primary">Сохранить</button><button id="exportBtn">Экспорт ▾</button></div>
+</header>
+<main class="workspace">
+ <nav class="tools" aria-label="Инструменты">
+  <button class="tool active" data-tool="select" title="Выбор" aria-label="Выбор"><svg viewBox="0 0 24 24"><path d="M5 3l13 11-6 1-3 6z"/></svg></button>
+  <button class="tool" data-tool="pen" title="Кисть" aria-label="Кисть"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></button>
+  <button class="tool" data-tool="eraser" title="Ластик" aria-label="Ластик"><svg viewBox="0 0 24 24"><path d="M4 15l9-10 7 6-8 9H7z"/><path d="M9 20h11"/></svg></button>
+  <button class="tool" data-tool="line" title="Линия" aria-label="Линия"><svg viewBox="0 0 24 24"><path d="M5 19L19 5"/></svg></button>
+  <button class="tool" data-tool="rect" title="Прямоугольник" aria-label="Прямоугольник"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1"/></svg></button>
+  <button class="tool" data-tool="circle" title="Эллипс" aria-label="Эллипс"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="6"/></svg></button>
+  <button class="tool" data-tool="text" title="Текст" aria-label="Текст"><svg viewBox="0 0 24 24"><path d="M4 6h16M12 6v13M8 19h8"/></svg></button>
+  <button class="tool" data-tool="hand" title="Перемещение" aria-label="Перемещение"><svg viewBox="0 0 24 24"><path d="M8 12V5a1.5 1.5 0 013 0v5-7a1.5 1.5 0 013 0v7-5a1.5 1.5 0 013 0v7-3a1.5 1.5 0 013 0v6c0 4-2 6-6 6h-2c-2 0-3-1-4-2l-3-4a1.5 1.5 0 012-2z"/></svg></button>
+  <div style="height:1px;background:var(--line);width:80%;margin:4px"></div><button id="undoBtn" class="tool" title="Отменить" aria-label="Отменить"><svg viewBox="0 0 24 24"><path d="M9 7L4 12l5 5"/><path d="M5 12h8a6 6 0 016 6"/></svg></button><button id="redoBtn" class="tool" title="Повторить" aria-label="Повторить"><svg viewBox="0 0 24 24"><path d="M15 7l5 5-5 5"/><path d="M19 12h-8a6 6 0 00-6 6"/></svg></button>
+ </nav>
+ <section class="stagewrap">
+  <div class="stagebar"><strong id="docTitle">Без названия</strong><span>•</span><span id="sizeLabel">1280 × 720</span><span class="wide">•</span><span class="wide" id="zoomLabel">100%</span><span style="margin-left:auto"></span><button id="fitBtn">Вписать</button></div>
+  <div class="stage" id="stage"><canvas id="canvas" width="1280" height="720" aria-label="Холст анимации"></canvas></div>
+  <div class="stagebar"><span>Инструмент: <strong id="toolLabel">Выбор</strong></span><span style="margin-left:auto">FPS <strong id="fpsLabel">12</strong></span><button id="playBtn">▶ Просмотр</button></div>
+ </section>
+ <aside class="side">
+  <section><div class="sectionhead">Слои <span><button id="addLayerBtn" class="iconbtn" title="Добавить слой">＋</button><button id="delLayerBtn" class="iconbtn" title="Удалить слой">−</button></span></div><div class="layerlist" id="layerList"></div><p class="muted small">Переключай видимость и выбирай слой для рисования.</p></section>
+  <section><div class="sectionhead">Свойства</div><div class="props">
+   <label>Цвет<input type="color" id="color" value="#8f32e8"></label><label>Размер кисти<input type="number" id="brushSize" value="8" min="1" max="100"></label>
+   <label>Заливка<select id="fill"><option value="none">Нет</option><option value="solid">Сплошная</option></select></label><label>Непрозрачность<input type="range" id="opacity" min="10" max="100" value="100"></label>
+   <label>Ширина<input type="number" id="docWidth" min="64" max="4096" value="1280"></label><label>Высота<input type="number" id="docHeight" min="64" max="4096" value="720"></label>
+   <label>Частота FPS<input type="number" id="fps" min="1" max="60" value="12"></label><label>Эффект<select id="effect"><option value="none">Нет</option><option value="glow">Неоновое свечение</option><option value="shadow">Мягкая тень</option><option value="blur">Мягкость</option></select></label>
+  </div><button id="applySizeBtn" style="width:100%;margin-top:8px">Применить размер холста</button></section>
+  <section><div class="sectionhead">Проект</div><div class="props"><label>Название<input id="projectName" value="After Night Project"></label><label>Фон<select id="background"><option value="#ffffff">Белый</option><option value="#000000">Чёрный</option><option value="transparent">Прозрачный</option><option value="#160d20">Ночной</option></select></label></div><button id="importImageBtn" style="width:100%;margin-top:8px">＋ Импорт изображения</button><input id="imageInput" type="file" accept="image/*" hidden></section>
+ </aside>
+</main>
+<section class="timeline">
+ <div class="timelinehead"><strong>Таймлайн</strong><button id="addFrameBtn">＋ Кадр</button><button id="duplicateFrameBtn">⧉ Дублировать</button><button id="deleteFrameBtn">Удалить кадр</button><button id="onionBtn">Луковая кожа: выкл.</button><span class="muted small" id="frameCount">Кадр 1 / 1</span></div>
+ <div class="frames" id="frames"></div>
+</section>
+<footer class="status"><span id="statusText">Готово. Выбери инструмент и рисуй на холсте.</span><span>Локальная работа</span></footer>
+</div>
+<input type="file" id="projectInput" accept=".anproj,.json,application/json" hidden>
+<div id="exportMenu" style="display:none;position:fixed;right:12px;top:62px;z-index:20;background:#160d20;border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 10px 40px #000b">
+<button id="pngExport" style="display:block;width:100%;margin:3px">Экспорт текущего кадра PNG</button><button id="webmExport" style="display:block;width:100%;margin:3px">Экспорт анимации WebM</button><button id="jsonExport" style="display:block;width:100%;margin:3px">Экспорт проекта .anproj</button>
+</div>
+<script src="app.js"></script>
+</body></html>
